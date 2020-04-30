@@ -5,10 +5,12 @@ import java.util.Scanner;
 
 public class UserService {
 	
-	public User createUser (String username, String password) {
-		User user = new User();
-		user.setUsername(username);
-		user.setPassword(password);
-		return user;
+	public User validateUser(String username, String password) {
+		for(User users : UserLoginApplication.user) {
+			if(users.getUsername().equalsIgnoreCase(username) && users.getPassword().equals(password)) {
+				return users;
+			}
+		}
+		return null;
 	}
 }
