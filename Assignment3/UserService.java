@@ -7,6 +7,8 @@ public class UserService {
 	
 	public User validateUser(String username, String password) {
 		for(User users : UserLoginApplication.user) {
+			if(user == null)
+				continue;
 			if(users.getUsername().equalsIgnoreCase(username) && users.getPassword().equals(password)) {
 				return users;
 			}
