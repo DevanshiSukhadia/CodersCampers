@@ -11,9 +11,23 @@ public class UserLoginApplication {
 	public static UserService userService = new UserService();
 
 	public static void main(String[] args) throws FileNotFoundException, IOException{
-		
-	//	System.out.println(user);
-//		File file = new File("data.txt");
+		   BufferedReader br = null;
+					try {
+						br = new BufferedReader(new FileReader("data.txt"));
+						String line = null;
+						int i = 0;
+						while ((line = br.readLine()) != null) {
+						 
+						  user[i] = new User(line.split(","));
+						//  System.out.println(user[i]);
+						  i++;
+						} 
+					}
+						finally {
+							if(br != null)
+							      br.close();
+						}
+
 		Scanner scanner = null;
 		
 		try {
@@ -44,52 +58,7 @@ public class UserLoginApplication {
 			
 		} finally {
 			scanner.close();
-		}
-		
-		   BufferedReader br = null;
-			try {
-				br = new BufferedReader(new FileReader("data.txt"));
-				String line = null;
-				int i = 0;
-				while ((line = br.readLine()) != null) {
-				 // String[] values = line.split(",");
-				  user[i] = new User(line.split(","));
-				  System.out.println(user[i]);
-				  i++;
-//				  for (String str : values) {
-//					  User newUsers = new User();
-//					  newUsers.setUsername(values[0]);
-//					  newUsers.setPassword(values[1]);
-//					  newUsers.setName(values[2]);
-//				  user[i] = newUsers;
-//				  i++;
-			    
-				//  }
-				} 
-			}
-				finally {
-					if(br != null)
-					      br.close();
-				}
-
-		
-	//	BufferedReader filereader = null;
-		//String line;
-//		String str = null;
-//		try {
-//			Scanner input = new Scanner(file);
-//			String[] tokens = str.split(",");
-//			System.out.println(tokens);
-//			String email = input.nextLine();
-//			int password = input.nextInt(); 
-//			String username = input.nextLine();
-//			System.out.println("Name: %s ");
-				
-//			} catch (IOException e) {
-//				
-//				e.printStackTrace();
-//			}
-//		
+		}	
 			
 	}
 
